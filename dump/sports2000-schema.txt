@@ -1,0 +1,68 @@
+# Sports2000 Database Schema Summary
+
+## Sequences
+- NextCustNum: Initial 1000, Increment 5
+- NextInvNum: Initial 1000, Increment 1
+- NextOrdNum: Initial 1000, Increment 5
+- NextItemNum: Initial 100, Increment 10
+- NextRefNum: Initial 1, Increment 1
+- NextVisitor: Initial 1000, Increment 1
+- NextSupplNum: Initial 0, Increment 1
+- NextLocalDefNum: Initial 0, Increment 1
+- NextWareNum: Initial 0, Increment 1
+- NextBinNum: Initial 0, Increment 1
+- NextPONum: Initial 0, Increment 1
+- NextEmpNum: Initial 0, Increment 1
+- NextInvTransNum: Initial 0, Increment 1
+
+## Key Tables
+
+### Customer
+- Primary Key: CustNum
+- Fields: Name, Address, City, State, Country, Phone, Contact, SalesRep, Comments, CreditLimit, Balance, Terms, Discount, PostalCode, Fax, EmailAddress
+- Area: Cust_Data
+
+### Item
+- Primary Key: ItemNum
+- Fields: ItemNum, Name, ItemTypeId, Price, Cost, OnHand, OnOrder, ReorderLevel
+- Area: Inventory
+
+### Order
+- Primary Key: OrderNum
+- Fields: OrderNum, CustNum, OrderDate, PromiseDate, ShipDate, BillToID, ShipToID, Terms, Carrier, Instructions, PONum, OrderStatus, Discount
+- Area: Order
+
+### OrderLine
+- Primary Key: OrderNum, LineNum
+- Fields: OrderNum, LineNum, ItemNum, Qty, Price, Discount, ShipDate
+- Area: Order
+
+### Employee
+- Primary Key: EmpNum
+- Fields: EmpNum, Name, Address, City, State, PostalCode, Phone, HireDate, TerminationDate, Manager
+- Area: Employee
+
+### Benefits
+- Primary Key: EmpNum
+- Fields: EmpNum, HealthCare, LifeInsurance, Pension401K, StockPurchase, MedicalSpending, DependentCare
+- Area: Employee
+
+### BillTo
+- Primary Key: CustNum, BillToID
+- Fields: CustNum, BillToID, Name, Address, Address2, City, State, PostalCode, Contact, Phone
+- Area: Order
+
+### Bin
+- Primary Key: BinNum
+- Fields: WarehouseNum, Itemnum, Qty, BinNum, BinName
+- Area: Inventory
+
+## Database Areas
+- Cust_Data: Customer-related tables
+- Order: Order and related tables
+- Inventory: Inventory management tables
+- Employee: Employee and benefits tables
+
+## Notes
+- Full schema available in dump/sports2000.df
+- This is a condensed summary for reference purposes
